@@ -2,17 +2,14 @@ package com.wishit.product.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
 @Table(name="product")
-//@Getter
-//@Setter
-
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class Product {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +23,7 @@ public class Product {
 	@Column(name = "stock_quantity")
 	private Integer stockQuantity;
 
+	@JsonManagedReference
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductImage> images = new ArrayList<>();
 	
@@ -69,7 +67,5 @@ public class Product {
 	public void setImages(List<ProductImage> images) {
 		this.images = images;
 	}
-	
-	
 	
 }
