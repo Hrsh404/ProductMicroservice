@@ -4,6 +4,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wishit.product.dto.ProductDTO;
 import com.wishit.product.entity.Product;
 import com.wishit.product.service.ProductService;
-
+import java.util.List;
 @RestController
 @RequestMapping("/products")
 public class ProductController {
@@ -34,6 +35,11 @@ public class ProductController {
 	        }
 		}
 	}
+
+	@GetMapping()
+    public List<Product> getProducts() {
+        return prodServ.getAllProducts();
+    }
  }
 
 
