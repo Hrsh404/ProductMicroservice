@@ -32,4 +32,9 @@ public class ProductService {
         product.setImages(images);
         return productRepo.save(product);
 	}
+
+	public List<Product> getAllProducts() {
+		return productRepo.findAll();
+	}
+
 }
