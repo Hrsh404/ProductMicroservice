@@ -1,15 +1,12 @@
 package com.wishit.product.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
 @Table(name = "product_image")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Data
 public class ProductImage {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,9 +16,9 @@ public class ProductImage {
     @Column(name = "image_url", nullable = false)
     private String imageUrl;
 
-    // Many images belong to one product
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)
+    @JsonBackReference
     private Product product;
 
 	public String getImageUrl() {
@@ -39,7 +36,5 @@ public class ProductImage {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-
-
 	
 }
