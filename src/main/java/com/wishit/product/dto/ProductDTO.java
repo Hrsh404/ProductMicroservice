@@ -5,6 +5,7 @@ import java.util.List;
 
 
 public class ProductDTO {
+	private long id;
 	private String name;
     private String description;
     private Double price;
@@ -12,6 +13,10 @@ public class ProductDTO {
     
     private List<ProductImageDTO> images;
     
+	public long getId()
+	{
+		return id;
+	}
 	public String getName() {
 		return name;
 	}

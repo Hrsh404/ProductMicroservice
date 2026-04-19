@@ -1,0 +1,25 @@
+@host = localhost
+@port = 63538 
+
+POST http://{{host}}:{{port}}/products/add_product
+Content-Type: application/json
+
+{
+    "name":"Cup",
+    "description":"Utensils",
+    "price":200,
+    "stockQuantity":"500",
+    "images": []
+}
+###
+PUT http://{{host}}:{{port}}/products/updateProduct
+Content-Type: application/json
+
+{
+    "id": 7,
+    "name":"Liquid Holder",
+    "description":"Kitchen Equipment",
+    "price":1800,
+    "stockQuantity":"100",
+    "images": []
+}
